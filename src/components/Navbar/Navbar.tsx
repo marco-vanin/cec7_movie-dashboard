@@ -1,9 +1,9 @@
-import React from "react";
+import Search from "./Search/Search";
 
 const Navbar = () => {
   return (
-    <div className="bg-red-500 w-full h-16">
-      <div>Nav</div>
+    <div className="w-full h-16 flex items-center justify-center">
+      <Search />
     </div>
   );
 };
