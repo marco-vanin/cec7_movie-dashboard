@@ -6,11 +6,11 @@ import MovieDetails from "./pages/MovieDetails";
 
 function App() {
   return (
-    <div className="flex">
+    <div className="flex min-h-screen">
       {/* <Sidebar /> */}
       <div className="flex flex-col flex-grow">
         <Navbar />
-        <div className="flex-grow">
+        <div className="flex-grow p-6">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/movie" element={<MovieDetails />} />

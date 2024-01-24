@@ -22,7 +22,7 @@ const Home = () => {
   console.log("Movies:", movies);
 
   return (
-    <div className="flex flex-wrap gap-4">
+    <div className="flex flex-wrap gap-6 justify-center">
       {movies.map((movie) => (
         <MovieCard key={movie.id} movie={movie} />
       ))}
