@@ -1,7 +1,13 @@
+import { useNavigate } from "react-router-dom";
 import { Movie } from "../types/movie.type";
 
 const MovieCard = ({ movie }: { movie: Movie }) => {
   const imageUrl = `https://image.tmdb.org/t/p/w500/${movie.poster_path}`;
+  const navigate = useNavigate();
+
+  const handleCardClick = (id: number) => {
+    navigate(`/movie/${id}`);
+  };
 
   return (
     <div className="group relative bg-white overflow-hidden rounded-lg shadow-md transition-all duration-300">
@@ -26,9 +32,7 @@ const MovieCard = ({ movie }: { movie: Movie }) => {
           </div>
           <button
             className="border border-white text-white py-2 px-4 rounded hover:bg-white hover:text-black transition-all duration-300"
-            onClick={() =>
-              console.log("See more clicked for movie id:", movie.id)
-            }
+            onClick={() => handleCardClick(movie.id)}
           >
             See More
           </button>

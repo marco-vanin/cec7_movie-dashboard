@@ -20,3 +20,18 @@ export const getPopularMovies = async () => {
     throw err;
   }
 };
+
+export const getMovieDetails = async (id: string) => {
+  try {
+    const response = await fetch(
+      `https://api.themoviedb.org/3/movie/${id}?language=en-US`,
+      options
+    );
+
+    const data = await response.json();
+    return data;
+  } catch (err) {
+    console.error(err);
+    throw err;
+  }
+};
