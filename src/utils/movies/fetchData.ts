@@ -1,10 +1,4 @@
-const options = {
-  method: "GET",
-  headers: {
-    accept: "application/json",
-    Authorization: `Bearer ${import.meta.env.VITE_TMDB_TOKEN}`,
-  },
-};
+import { options } from "../utils";
 
 export const getPopularMovies = async () => {
   try {

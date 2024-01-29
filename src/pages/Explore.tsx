@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { MovieType } from "../components/types/movie.type";
-import { getPopularMovies } from "../utils/fetchData";
+import { getPopularMovies } from "../utils/movies/fetchData";
 import { TvShowType } from "../components/types/tvShow.type";
 import MovieCard from "../components/MovieCard/MovieCard";
+import TvShowCard from "../components/TvShowCard/TvShowCard";
+import { getPopularTvShows } from "../utils/tvShows/fetchData";
 
 const Explore = () => {
   const { page } = useParams();
@@ -25,7 +27,16 @@ const Explore = () => {
     }
 
     if (page === "tvshows") {
-      console.log("tvshows");
+      const fetchData = async () => {
+        try {
+          const data = await getPopularTvShows();
+          setVideos(data.results);
+        } catch (error) {
+          console.error("Error fetching movies:", error);
+        }
+      };
+
+      fetchData();
       return;
     }
 
@@ -35,7 +46,7 @@ const Explore = () => {
   return (
     <div className="flex gap-y-8 flex-col">
       <div className="flex justify-between items-center">
-        <h1>Explore {page}</h1>
+        <p className="text-2xl">Explore {page}</p>
 
         <div className="w-1/5">
           <select
@@ -56,9 +67,13 @@ const Explore = () => {
       </div>
 
       <div className="flex flex-wrap gap-6 justify-center">
-        {videos.map((movie) => (
-          <MovieCard key={movie.id} movie={movie} />
-        ))}
+        {videos.map((video) =>
+          page === "movies" ? (
+            <MovieCard key={video.id} movie={video as MovieType} />
+          ) : (
+            <TvShowCard key={video.id} tvShow={video as TvShowType} />
+          )
+        )}
       </div>
     </div>
   );

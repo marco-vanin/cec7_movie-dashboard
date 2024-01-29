@@ -1,22 +1,22 @@
 import { useNavigate } from "react-router-dom";
-import { MovieType } from "../types/movie.type";
+import { TvShowType } from "../types/tvShow.type";
 
 interface Props {
-  movie: MovieType;
+  tvShow: TvShowType;
 }
 
-const MovieCard = ({ movie }: Props) => {
-  const imageUrl = `https://image.tmdb.org/t/p/w500/${movie.poster_path}`;
+const TvShowCard = ({ tvShow }: Props) => {
+  const imageUrl = `https://image.tmdb.org/t/p/w500/${tvShow.poster_path}`;
   const navigate = useNavigate();
 
   const handleCardClick = (id: number) => {
-    navigate(`/movie/${id}`);
+    navigate(`/tvShow/${id}`);
   };
 
   return (
     <div
       className="w-60 p-2 rounded-xl transform transition-all hover:-translate-y-2 duration-300 cursor-pointer"
-      onClick={() => handleCardClick(movie.id)}
+      onClick={() => handleCardClick(tvShow.id)}
     >
       <img className="object-cover rounded-xl" src={imageUrl} alt="poster" />
 
@@ -26,20 +26,20 @@ const MovieCard = ({ movie }: Props) => {
           href="#"
           className="text-white bg-purple-600 px-3 py-1 rounded-md hover:bg-purple-700"
         >
-          {movie.vote_average}
+          {tvShow.vote_average}
         </a>
       </div>
 
       <div className="p-2">
         <p className="font-semibold text-white text-lg overflow-ellipsis text-nowrap">
-          {movie.title}
+          {tvShow.name}
         </p>
         <p className="text-gray-500 mb-1">
-          {new Date(movie.release_date).toLocaleDateString()}
+          {new Date(tvShow.first_air_date).toLocaleDateString()}
         </p>
       </div>
     </div>
   );
 };
 
-export default MovieCard;
+export default TvShowCard;

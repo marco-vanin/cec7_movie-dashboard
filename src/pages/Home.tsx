@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import MovieCard from "../components/MovieCard/MovieCard";
 import { Movie } from "../components/types/movie.type";
-import { getPopularMovies } from "../utils/fetchData";
+import { getPopularMovies } from "../utils/movies/fetchData";
 
 const Home = () => {
   const [movies, setMovies] = useState<Movie[]>([]);
