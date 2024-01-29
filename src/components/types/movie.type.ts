@@ -1,4 +1,4 @@
-export type Movie = {
+export type MovieType = {
   adult: boolean;
   backdrop_path: string;
   genre_ids: number[];
@@ -15,7 +15,7 @@ export type Movie = {
   vote_count: number;
 };
 
-export type MovieDetails = {
+export type MovieDetailsType = {
   adult: boolean;
   backdrop_path: string;
   belongs_to_collection: null | unknown;
@@ -29,12 +29,12 @@ export type MovieDetails = {
   overview: null | string;
   popularity: number;
   poster_path: null | string;
-  production_companies: ProductionCompany[];
-  production_countries: ProductionCountry[];
+  production_companies: ProductionCompanyType[];
+  production_countries: ProductionCountryType[];
   release_date: string;
   revenue: number;
   runtime: null | number;
-  spoken_languages: SpokenLanguage[];
+  spoken_languages: SpokenLanguageType[];
   status:
     | "Rumored"
     | "Planned"
@@ -54,19 +54,19 @@ type Genre = {
   name: string;
 };
 
-type ProductionCompany = {
+type ProductionCompanyType = {
   id: number;
   logo_path: null | string;
   name: string;
   origin_country: string;
 };
 
-type ProductionCountry = {
+type ProductionCountryType = {
   iso_3166_1: string;
   name: string;
 };
 
-type SpokenLanguage = {
+type SpokenLanguageType = {
   english_name: string;
   iso_639_1: string;
   name: string;

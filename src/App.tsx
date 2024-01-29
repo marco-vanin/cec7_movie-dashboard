@@ -2,21 +2,20 @@ import { Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
 import ActorDetails from "./pages/ActorDetails";
 import MovieDetails from "./pages/MovieDetails";
-import Sidebar from "./components/Sidebar/Sidebar";
+import Explore from "./pages/Explore";
 
 function App() {
   return (
-    <div className="flex min-h-screen">
-      <Sidebar />
-      <div className="flex flex-col flex-grow">
-        <Navbar />
-        <div className="flex-grow p-6">
-          <Routes>
-            {/* <Route path="/" element={<Home />} /> */}
-            <Route path="/movie/:id" element={<MovieDetails />} />
-            <Route path="/actor" element={<ActorDetails />} />
-          </Routes>
-        </div>
+    <div className="flex flex-col flex-grow px-6">
+      <Navbar />
+      <div className="flex-grow p-6">
+        <Routes>
+          {/* <Route path="/" element={<Home />} /> */}
+          <Route path="/explore/:page" element={<Explore />} />
+
+          <Route path="/movie/:id" element={<MovieDetails />} />
+          <Route path="/actor" element={<ActorDetails />} />
+        </Routes>
       </div>
     </div>
   );
