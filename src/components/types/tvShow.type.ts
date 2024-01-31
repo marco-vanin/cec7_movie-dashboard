@@ -94,3 +94,38 @@ type SpokenLanguageType = {
   iso_639_1: string;
   name: string;
 };
+
+export type TvShowCreditsType = {
+  cast: CastType[];
+  crew: CrewType[];
+  id: number;
+};
+
+type CastType = {
+  adult: boolean;
+  gender: number;
+  id: number;
+  known_for_department: string;
+  name: string;
+  original_name: string;
+  popularity: number;
+  profile_path: string | null;
+  cast_id: number;
+  character: string;
+  credit_id: string;
+  order: number;
+};
+
+interface CrewType {
+  adult: boolean;
+  gender: number;
+  id: number;
+  known_for_department: string;
+  name: string;
+  original_name: string;
+  popularity: number;
+  profile_path: string | null;
+  credit_id: string;
+  department: string;
+  job: string;
+}

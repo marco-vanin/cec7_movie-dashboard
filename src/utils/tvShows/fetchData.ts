@@ -29,3 +29,18 @@ export const getTvShowsDetails = async (id: string) => {
     throw err;
   }
 };
+
+export const getTvShowsCredits = async (id: string) => {
+  try {
+    const response = await fetch(
+      `https://api.themoviedb.org/3/tv/${id}/credits?language=en-US`,
+      options
+    );
+
+    const data = await response.json();
+    return data;
+  } catch (err) {
+    console.error(err);
+    throw err;
+  }
+};

@@ -17,10 +17,12 @@ const MovieDetails = () => {
   );
 
   useEffect(() => {
+    if (!id) return;
+
     const fetchData = async () => {
       try {
-        const data = await getMovieDetails(id!);
-        const credits = await getMovieCredits(id!);
+        const data = await getMovieDetails(id);
+        const credits = await getMovieCredits(id);
         setMovieDetails(data);
         setMovieCredits(credits);
       } catch (error) {
@@ -28,9 +30,7 @@ const MovieDetails = () => {
       }
     };
 
-    if (id) {
-      fetchData();
-    }
+    fetchData();
   }, [id]);
 
   console.log("Movie Details:", movieDetails);
